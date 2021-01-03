@@ -24,5 +24,6 @@ git pull --rebase origin master
 
 删除远程库中一个文件(夹)，本地库不删除
 	https://blog.csdn.net/J080624/article/details/83346991
-
+删除
+	git remote rm origin
 git remote add origin https://github.com/MMM360/document.git
