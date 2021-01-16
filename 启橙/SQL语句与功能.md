@@ -1,4 +1,4 @@
-##导出映射代码 http://localhost:8080/api/generator/code?tableName=yb_notice&module=yb&smallModule=notice&buildVue=false
+##导出映射代码 http://localhost:8080/api/generator/code?tableName=yb_push_temp&module=yb&smallModule=push&buildVue=false
 ##吕哥SQL优化：https://blog.csdn.net/orecle_littleboy/article/details/88534160
 ##业务
 	1. 根据用户ID查询兴趣列表 /api/mp/yb/my/classify/getInterestByUserId
@@ -20,9 +20,13 @@
 		2. 打赏与点赞 -- giveReward
 		3. 召唤--addSummon
 		4. 动态发布-通知选中的人-addDynamic
+		5. 评论打赏
+		6. 左边显示评论内容或者评论图片-右边都显示动态第一张图片或者评论
+		7. 视频拿第一帧
         //在缓存 通知 + 1
         //查询缓存通知的值
         //清除noticeCount
+
 	8. 定时连续天数发送礼物 2020-12-26 17:00
 	9. 感兴趣的小姐姐接口永远失效 2020-12-30
 	10. 注册后女直接改为权限用户，连续登陆七天的女生 提现type 1 默认 0 注册女生就为权限用户,增加提现字段
@@ -30,10 +34,17 @@
 		1.表情包替换，发送解析。用数据库的。 
 	12. 推送
 		1. 初版直接给符合特殊账号的女性用户每天推送10人，2女8男，随机匹配，男性用户推送是给新注册3天内的用户每天推送10个女生
+		2. 根据图片
 	
-userName
-要修改的
-用户的字段不能随意修改-不能及时更新
+问题
+	1. 用户登陆app每天唯一条数据没数据-yb_app_user_login 没有数据-定时任务没有开启/还没对比数据-完成
+		1. userIDList扣钱日志会不对 
+	2. tomcat定时任务发送两条-数据库需要做配置
+	3. app版本上传错误-未知-先上传到七牛云-
+	4. 动态通知图片用第一张没改好-完成
+	5. 后台用户兴趣显示为空-完成
+	6. 充值套餐后台没加负数验证
+FFMPEG
 explain
 ##别人业务
 	1. 同城交友-炯阳
@@ -41,7 +52,14 @@ explain
 	3. 充值总数字段-炯阳
 	4. 礼物之前回掉-袁浩
 	5. 签到-
-	6. 等级功能-袁浩
+	6. 等级功能-袁浩-等级修改-炯阳
+	7. 聊天扣钱-吕哥
+	8. 修改密码
+		1. token+手机号
+		2. token30分钟
+		3. 用完token删除
+		4. 验证码正确返回token
+	9. 首页动态列表排序逻辑更改:以每两小时为区间,点赞数+打赏数+评论数最大的3条排列最前,剩下的按时间排序
 ##SQL
 		SELECT count(*) AS articleCount,A.userId,B.userName,B.avatarUrl
         FROM yb_user_dynamic_article AS A LEFT JOIN yb_app_user AS B ON A.userId = B.id
@@ -97,7 +115,7 @@ explain
 		(REPLACE(UUID(),"-",""),#{item.userId},#{item.classifyId})
 
 		INSERT INTO `qc_task_schedule` 
-		VALUES(REPLACE(UUID(),"-",""),'UserGiftDayTask','yb','每天几分几时用户发送礼物','com.qc.yb.task.UserGiftDayTask',1,'0 */3 * * * ?','每天几分几时用户发送礼物',NOW(),NULL);
+		VALUES(REPLACE(UUID(),"-",""),'UserPushTask','yb','推送-权限用户发送打扰信息','com.qc.yb.task.UserPushTask',1,'0 */10 * * * ?','推送-权限用户发送打扰信息',NOW(),NULL);
 
 	SELECT yau.* FROM yb_app_user yau WHERE yau.id NOT IN(
 		SELECT yun.noInterestUserId FROM yb_user_nointerest yun 
@@ -114,23 +132,14 @@ explain
 	REPLACE(UUID(),"-","")
 	SEC_TO_TIME(createTime)
 	BETWEEN
-	动态列表
-	duration
 
 推送功能
-拿特殊账号ID-每天给10个人发消息(随机打扰消息) - 2女8男
-新注册男性用户3天内-每天收到10个女生的消息
-
-收到的时间段
-登陆的时候-一条
-早上9点-11点-随机时间发送
-下午3点-五点
-晚上8-10点
-
-查询是否存在推送
-
-
-两个值 一个值扣
-
-480383c948914ad9b453ff2974209e17
-769123c787304652a8b89876eb4350c4
+	女生-每天给按配置个人发消息(随机打扰消息) - x女x男
+	新注册男性用户x天内-每天收到x个女生的消息
+	收到的时间段
+	登陆的时候-一条
+	早上9点-11点-随机时间发送
+	下午3点-五点
+	晚上8-10点
+	两个值 一个值扣
+	新注册的男生够 数目就不发
