@@ -1,4 +1,4 @@
-##导出映射代码 http://localhost:8080/api/generator/code?tableName=yb_push_temp&module=yb&smallModule=push&buildVue=false
+##导出映射代码 http://localhost:8080/api/generator/code?tableName=yb_config_prompt&module=yb&smallModule=platform&buildVue=false
 ##吕哥SQL优化：https://blog.csdn.net/orecle_littleboy/article/details/88534160
 ##业务
 	1. 根据用户ID查询兴趣列表 /api/mp/yb/my/classify/getInterestByUserId
@@ -38,12 +38,14 @@
 	
 问题
 	1. 用户登陆app每天唯一条数据没数据-yb_app_user_login 没有数据-定时任务没有开启/还没对比数据-完成
-		1. userIDList扣钱日志会不对 
+		1. userIDList扣钱日志会不对-还没测试
 	2. tomcat定时任务发送两条-数据库需要做配置
-	3. app版本上传错误-未知-先上传到七牛云-
+	3. app版本上传错误-未知-先上传到七牛云-手动-完成
 	4. 动态通知图片用第一张没改好-完成
 	5. 后台用户兴趣显示为空-完成
 	6. 充值套餐后台没加负数验证
+	7. 礼物-发送女的收不到钱-2021-01-18-完成
+	8. 女性用户聊天不收费
 FFMPEG
 explain
 ##别人业务
@@ -59,7 +61,11 @@ explain
 		2. token30分钟
 		3. 用完token删除
 		4. 验证码正确返回token
-	9. 首页动态列表排序逻辑更改:以每两小时为区间,点赞数+打赏数+评论数最大的3条排列最前,剩下的按时间排序
+	9. 首页动态列表排序逻辑更改:以每两小时为区间,点赞数+打赏数+评论数最大的3条排列最前,剩下的按时间排序-图片没有排序
+	10. 验收当前用户手机号输入是否正确-炯阳
+	11. 发送消息够30条扣钱-男扣-女不扣
+		男发女-双方都扣钱
+		男发特殊用户-双方都不扣钱
 ##SQL
 		SELECT count(*) AS articleCount,A.userId,B.userName,B.avatarUrl
         FROM yb_user_dynamic_article AS A LEFT JOIN yb_app_user AS B ON A.userId = B.id
@@ -143,3 +149,16 @@ explain
 	晚上8-10点
 	两个值 一个值扣
 	新注册的男生够 数目就不发
+
+1，连续在线30分钟
+2，连续在线120分钟
+3，21点后连续在线240分钟 
+4，60分钟内与5人对话 （60分钟内改每个小时去做计算的，奖励不叠加）
+5，21点后120分钟内与5人对话 （120分钟改21点后两个小时算一次，奖励不叠加）
+6,24小时内双方每互动30句话
+  都是每天早上6点的定时计算前一天奖励
+
+
+b7792831712b4fb08373e739b07f5811
+769123c787304652a8b89876eb4350c4
+
