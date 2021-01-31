@@ -1,9 +1,10 @@
 --registry=https://registry.npm.taobao.org
 npm install -g @vue/cli --registry=https://registry.npm.taobao.org
-
 npm install --registry=https://registry.npm.taobao.org
 npm run build:prod --report
 npm run dev
+npm install -g serve --registry=https://registry.npm.taobao.org
+serve -s dist
 
 node.js下载
 			https://nodejs.org/dist/
