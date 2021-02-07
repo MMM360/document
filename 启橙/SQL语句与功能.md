@@ -1,4 +1,4 @@
-##导出映射代码 http://localhost:8080/api/generator/code?tableName=yb_config_prompt&module=yb&smallModule=platform&buildVue=false
+##导出映射代码 http://localhost:8080/api/generator/code?tableName=yb_user_announcement&module=yb&smallModule=platform&buildVue=true
 ##吕哥SQL优化：https://blog.csdn.net/orecle_littleboy/article/details/88534160
 ##业务
 	1. 根据用户ID查询兴趣列表 /api/mp/yb/my/classify/getInterestByUserId
@@ -7,7 +7,6 @@
 		rUser   回复用戶的Id
 		加字段 
 	3. 悬赏任务
-		int intIndex = strOrig.indexOf("悬赏");
 	4. 魅力/话痨/萌新/文章发布排行榜
 	5. 兴趣列表接口/用户兴趣	/api/mp/yb/my/classify/getInterest
 	6. 定时任务-女性特殊权限账号申请
@@ -36,6 +35,7 @@
 		1. 初版直接给符合特殊账号的女性用户每天推送10人，2女8男，随机匹配，男性用户推送是给新注册3天内的用户每天推送10个女生
 		2. 根据图片
 	13. 分享页面
+	14. 系统公告-2021-02-02
 问题
 	1. 用户登陆app每天唯一条数据没数据-yb_app_user_login 没有数据-定时任务没有开启/还没对比数据-完成
 		1. userIDList扣钱日志会不对-还没测试
@@ -70,6 +70,8 @@ explain
 	11. 发送消息够30条扣钱-男扣-女不扣
 		男发女-双方都扣钱
 		男发特殊用户-双方都不扣钱
+	12. 注销功能-与-注销单备份 炯阳
+	13. 气泡需求
 ##SQL
 		SELECT count(*) AS articleCount,A.userId,B.userName,B.avatarUrl
         FROM yb_user_dynamic_article AS A LEFT JOIN yb_app_user AS B ON A.userId = B.id
@@ -132,6 +134,8 @@ explain
 			WHERE yun.userId = 'b31ec92d322f4837bc79ba03d6b55271'
 	)and yau.gender = 0
 	ORDER BY RAND() LIMIT 3
+	
+	SELECT * FROM qc_dict WHERE typeCode = 'announcementUserType' OR typeCode = 'announcementType' OR typeCode = 'announcementAddressType' OR typeCode = 'userAnnouncementUserType'
 		
 ##Cron表达式
 	0 15 10 * * ?     每天上午10:15触发
@@ -153,6 +157,10 @@ explain
 	晚上8-10点
 	两个值 一个值扣
 	新注册的男生够 数目就不发
+https://filetest.toooh.net
+https://file.toooh.net
+1400471755 测试
+1400460431
 
 1，连续在线30分钟
 2，连续在线120分钟
@@ -166,3 +174,45 @@ explain
 b7792831712b4fb08373e739b07f5811
 769123c787304652a8b89876eb4350c4
 
+系统公告
+类型type 0无 1充值中心 2H5 
+公告头像
+公告名称
+标题
+内容
+url地址
+图片地址
+时间
+
+分页
+接口
+
+
+
+编辑的时候不用推送
+可以看详细
+
+配置表加两个字段
+4张表
+字典
+
+
+评论用userId
+
+被窝连麦 消息发送多次
+
+
+接通的时候掉接口
+	验证语音接收方是否在线
+	检测用户是否正在通话中
+	验证好奇点不足
+	扣速配的钱
+
+
+
+对方忙
+
+beforeSendMsg
+
+
+QC_USER_
