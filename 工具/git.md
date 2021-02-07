@@ -26,3 +26,7 @@ Windows安装git和环境变量配置
 	注意：
 		如果一个的时候只能默认生成密匙，不能另外起个名字，除非新建文件夹config,
 		git pull --rebase origin master failed to push some refs to git => github中的README.md文件不在本地代码目录中
+#如何克服解决 Git 冲突的恐惧症？
+	https://www.zhihu.com/question/27507789
+#git书籍
+	http://iissnan.com/progit/
