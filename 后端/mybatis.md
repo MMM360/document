@@ -6,3 +6,7 @@ MyBatis中#{ }和${ }的区别
 
 Mybatis框架下SQL注入漏洞处理
 						https://blog.csdn.net/aosica321/article/details/56675368
+
+mybatis in 查询使用String做条件
+
+​	https://www.cnblogs.com/gczmn/p/12416471.html

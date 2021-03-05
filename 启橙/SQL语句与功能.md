@@ -39,6 +39,7 @@
 	13. 分享页面
 	14. 系统公告-2021-02-02
 	15. 语音通话bug-修改
+	16. 苹果授权-https://www.jianshu.com/p/7e145d17dc0f https://www.it610.com/article/1298514206550728704.htm
 ## 四 问题
 	1. 用户登陆app每天唯一条数据没数据-yb_app_user_login 没有数据-定时任务没有开启/还没对比数据-完成
 		1. userIDList扣钱日志会不对-还没测试
@@ -142,6 +143,13 @@ explain
 	ORDER BY RAND() LIMIT 3
 	
 	SELECT * FROM qc_dict WHERE typeCode = 'announcementUserType' OR typeCode = 'announcementType' OR typeCode = 'announcementAddressType' OR typeCode = 'userAnnouncementUserType'
+	
+	 SELECT COUNT(1) FROM (
+	 SELECT 1 FROM qc_sys_log a,yb_app_user b
+	 WHERE a.userId = b.id
+	 AND DATE_FORMAT(b.`createTime`, '%Y-%m-%d') = '2021-02-08'
+	 AND DATE_FORMAT(a.createTime, '%Y-%m-%d') = '2021-03-03'
+	 GROUP BY a.userId) AS a
 
 ## 七 Cron表达式
 	0 15 10 * * ?     每天上午10:15触发
@@ -234,5 +242,65 @@ qc-manager包含全部
         System.out.println(index);
         礼物表突然不见了
         /api/mp/yb/my/message/getAllGift	获取礼物列表
+java -cp "F:\quan\java-decompiler\java-decompiler.jar" org.jetbrains.java.decompiler.main.decompiler.ConsoleDecompiler -dgs=true qc-im-1.1.0-20201110.074650-1.jar data
+
+nur
+
+synchronized (aaa)参数意义
+
+多个类共享代码
+构造方法-先调父类-再调用子类
+Buffered 缓存流原理
+2021-02-03 08:37:42
+
+问题 SAX为什么可以调用当前类的重写方法
+
+080901
+华南理工
+计算机科学与技术
+ 2.21
+ 
+ 已经测试
+ 动态过滤热门三条 - 完成
+ 昨日新增 - 完成
+ 升级权限用户 -完成
+ 换取登录凭证 - 完成
+ 
+ 13242160674
+ a778f15126684acbb485cb85903acaff
+ 2021-01-14 19:09:46
+ 
+ 200f5be2e59b4090b3de1d8abdcae006
+ 
+ "vue-loader-v16": "npm:vue-loader@^16.1.0",
+ 
+ 已注销多个
+ border: none;
+ 
+ .el-card__body, .el-main {
+    padding: 20px;
+    background: #0000cc;
+    height: 365px;
+    border: none;
+    }
+    
+        <mirror>
+       <id>nexus-aliyun</id>
+       <mirrorOf>*</mirrorOf>
+       <name>Nexus aliyun</name>
+       <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+    </mirror> 
+    
+    v-viewer
+    qc_auth_info
+    
+    guan
+    2021-02-08 13:38:02
+	Alexan
+	2021-02-08 10:24:45
+	哪吒
+	2021-02-21 21:41:24
+	
+	昨天有操作的用户数量
 ```
 
