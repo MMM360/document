@@ -79,3 +79,5 @@ spring源码分析之spring-messaging模块详解
 									https://www.cnblogs.com/dennyzhangdd/p/9602670.html
 被SpringBoot难倒的第N天，为什么我的CommandLineRunner 不 run ?
 	https://www.jianshu.com/p/5172643dc6f5
+SpringBoot系列---【get请求如何传递json对象的参数？】
+	https://www.cnblogs.com/hujunwei/p/13753197.html
