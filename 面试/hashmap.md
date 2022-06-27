@@ -12,3 +12,11 @@ Map的四种遍历方式
 
 带有示例的Java HashMap教程
 						https://www.callicoder.com/java-hashmap/
+HashMap原理详解
+	https://zhuanlan.zhihu.com/p/441023874
+Java 运算符
+	https://www.runoob.com/java/java-operators.html?_t_t_t=0.10842732596211135
+HashMap为什么用数组存了Hash值就快
+	https://www.csdn.net/tags/MtjacgysMDE2OTAtYmxvZwO0O0OO0O0O.html
+为什么HashMap的加载因子一定是0.75
+	https://baijiahao.baidu.com/s?id=1712194762129658571&wfr=spider&for=pc

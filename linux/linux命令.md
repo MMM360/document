@@ -55,27 +55,27 @@
 			 x：可执行：1
 
      进入根目录 cd / cd
-
-	 查询权限
-		    ls -l
-		    ll 指定文件或文件  
-	 
-	 修改文件属性与权限
-					 chgrp：修改文件所属用户组
-					 chown：修改文件拥有者
-					 chmod：修改文件的权限，SUID,SGID,SBIT等特性。
-	 			   例：
-					  [R]:进行递归修改，亦即连同子目录下的所有文件，目录
-					  chgrp [R] dirname/finenam  如：chgrp users initial-setup-ks.cfg
-					  chown [R] 账号名称 文件或目录/账号名称：用户组名称 文件或目录  如：chown bin initial-setup-ks.cfg/chown root:root initial-setup-ks.cfg
-					  数字类型修改
-								各个权限数字对应表： r:4，w:2，x:1：基本权限有九个，拥有者(owner),所属群组(group),其他人(others)
-								chmod [R] xyz 文件夹或者目录 注：xyz-代表各自[-rwxrwxrwx] 9个权限是三个三个一组
-								如：chmod 777 .bashrc
-					  符号类型修改
-								chmod u/g/o/a +(加入)/-(移除)/=(设置) r/w/x 文件或者目录
-							    例：chomd u=rwx,go=rx .bashrc
-	tlblog163
+    
+     查询权限
+    	    ls -l
+    	    ll 指定文件或文件  
+     
+     修改文件属性与权限
+    				 chgrp：修改文件所属用户组
+    				 chown：修改文件拥有者
+    				 chmod：修改文件的权限，SUID,SGID,SBIT等特性。
+     			   例：
+    				  [R]:进行递归修改，亦即连同子目录下的所有文件，目录
+    				  chgrp [R] dirname/finenam  如：chgrp users initial-setup-ks.cfg
+    				  chown [R] 账号名称 文件或目录/账号名称：用户组名称 文件或目录  如：chown bin initial-setup-ks.cfg/chown root:root initial-setup-ks.cfg
+    				  数字类型修改
+    							各个权限数字对应表： r:4，w:2，x:1：基本权限有九个，拥有者(owner),所属群组(group),其他人(others)
+    							chmod [R] xyz 文件夹或者目录 注：xyz-代表各自[-rwxrwxrwx] 9个权限是三个三个一组
+    							如：chmod 777 .bashrc
+    				  符号类型修改
+    							chmod u/g/o/a +(加入)/-(移除)/=(设置) r/w/x 文件或者目录
+    						    例：chomd u=rwx,go=rx .bashrc
+    tlblog163
 #第六章 linux文件与目录管理
 	相对路径和绝对路径
 					绝对路径：一定由根目录/写起：/user/share/doc
@@ -148,7 +148,7 @@
 		x：十六进制(hexadecimal)
 	od -t oCc /etc/issue : 内容以把八进制列出存储值的ASCII的对照表
 	
-  	修改文件时间或创建新文件
+	修改文件时间或创建新文件
 		touch test ： 创建文件
 		修改时间(modificateion time, mtime):内容数据修改
 		状态时间(status time,ctime):状态修改，如权限或属性修改
@@ -161,7 +161,7 @@
 		数字指的是该默认值需要减掉的权限
 		umask : 查看
 		umask -S 查看 
-
+	
 	文件隐藏属性
 		chattr命令只在ext2，ext3，ext4的Linux传统文件系统上面完整生效，其他的文件系统可能无法完整支持这个命令，例如xfs仅至此部分参数而已	
 		chattr [+-=][ASacdistu] 文件目录名称
@@ -492,7 +492,7 @@ XFS文件系统还原 xfsrestore
 	| [Ctrl]+w+q                   | 退出当前窗口 |
 	| :close                       | 关闭所有窗口 |	
 
-```	
+```
 #第十章 认识与学习BASH
 ```
 一. 硬件、内核、与Shell

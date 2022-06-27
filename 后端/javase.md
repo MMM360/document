@@ -45,3 +45,9 @@ Java hashCode() 和 equals()的若干问题解答
 	https://www.cnblogs.com/pengyingh/articles/2445826.html
 javac编译器框架1
 	https://www.jianshu.com/p/5df7f77611dc
+深入理解java反射机制
+	https://blog.csdn.net/u012585964/article/details/52011138?utm_medium=distribute.pc_relevant.none-task-blog-OPENSEARCH-2.not_use_machine_learn_pai&depth_1-utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-2.not_use_machine_learn_pai
+Java I/O体系从原理到应用，这一篇全说清楚了
+	https://blog.csdn.net/u014714618/article/details/103060472?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control
+Java高级篇（四）——反射
+	https://www.cnblogs.com/adamjwh/p/9683705.html

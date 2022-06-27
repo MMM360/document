@@ -1,0 +1,1 @@
+[J2Cache 和普通缓存框架有何不同，它解决了什么问题？](https://my.oschina.net/javayou/blog/1931381)

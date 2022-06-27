@@ -57,6 +57,10 @@ spring.jpa.open-view问题
 Spring Boot 中 spring.jpa.open-in-view 使用踩坑
 	https://blog.csdn.net/xiaohe00happy/article/details/108237543
 
+Spring data jpa hibernate:查询异常java.sql.SQLException: Column '列名' not found
+
+​	https://blog.csdn.net/lgxzzz/article/details/98896537?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.not_use_machine_learn_pai&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.not_use_machine_learn_pai
+
 hql
 JPQL
 Specification
