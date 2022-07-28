@@ -1,6 +1,6 @@
 fortify sca相关文档
 						http://www.360docs.net/search/fortify+sca+%E7%A0%B4%E8%A7%A3%E4%B8%8B%E8%BD%BD.html
-	  针对Fortify工具扫描出几大漏洞的解决办法总结
+针对Fortify工具扫描出几大漏洞的解决办法总结
 						https://blog.csdn.net/abcxy12336/article/details/52335490
 						https://blog.csdn.net/wuhenlove/article/details/77477100
 项目中关于配置文件中密码的加密处理

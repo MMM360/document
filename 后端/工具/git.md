@@ -20,9 +20,10 @@ Windows安装git和环境变量配置
 	命令git commit -m "要编辑的内容" (推送到本地库中)
 	命令git push origin master (推送到远端仓库也就是码云上)
 	
+
 	删除
 		git remote rm origin
-
+	
 	注意：
 		如果一个的时候只能默认生成密匙，不能另外起个名字，除非新建文件夹config,
 		git pull --rebase origin master failed to push some refs to git => github中的README.md文件不在本地代码目录中
@@ -82,12 +83,10 @@ cd /data/project_warehouse/front/tlblog      //这个是你每次要同步的文
 unset GIT_DIR                                //这个很重要! 很多同学没有写这个就同步不了,因为git执行自动脚本的时候有执行一些自定义变量,所以我们在这里unset一下
 git pull origin master                       //这个当然就是更新了 因为我创建了个ceshi的分支,这个可以更改为你们要同步的分支
 
-Honor61234
+Honorxxxx
 
 ssh-keygen -t rsa -C "root@163.com" //填写你的邮箱
 
 GIT_WORK_TREE=/data/project_warehouse/front/tlblog git checkout -f
 gitlab
 
-
-git config --global core.quotepath false
