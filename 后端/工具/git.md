@@ -1,10 +1,33 @@
-Windows安装git和环境变量配置
-	https://blog.csdn.net/dietime1943/article/details/71751007
-初次使用git配置以及git如何使用ssh密钥（将ssh密钥添加到github）
-	https://www.cnblogs.com/superGG1990/p/6844952.html
-删除远程库中一个文件(夹)，本地库不删除
-	https://blog.csdn.net/J080624/article/details/83346991
-基础教程
+## 一 安装  
+
+```
+#2.6.2版本
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+tar -xvf git-2.6.2.tar.gz -C /data/soft/git_tmp_v2.6.2 --strip-components 1
+/data/soft/git_v2.6.2
+./configure --prefix=/usr/local
+
+#2.9.5版本
+yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz
+mkdir -p /data/soft/git_v2.9.5
+tar -xvf git-2.9.5.tar.gz -C /data/soft/git_v2.9.5 --strip-components 1
+cd /data/soft/git_v2.9.5
+make prefix=/data/soft/git_v2.9.5 all
+sudo make prefix=/data/soft/git_v2.9.5 install
+
+#拉取仓库
+git clone --bare tlblog tlblog.git
+/data/project_warehouse/front/tlblog
+git clone git@121.37.238.185:/data/project_warehouse/front/tlblog/tlblog.git
+ln -s /data/soft/git_v2.6.2/bin/git-upload-pack /usr/bin/git-upload-pack
+ln -s /data/soft/git_v2.6.2/bin/git-receive-pack /usr/bin/git-receive-pack
+chown -R git:git tlblog.git
+```
+
+## 二 基础教程  
+
+```
 	cd ~/.ssh
 	ls
 	ssh-keygen -t rsa -C "1149697630@qq.com" //填写你的邮箱
@@ -20,73 +43,31 @@ Windows安装git和环境变量配置
 	命令git commit -m "要编辑的内容" (推送到本地库中)
 	命令git push origin master (推送到远端仓库也就是码云上)
 	
-
 	删除
-		git remote rm origin
+	git remote rm origin
 	
 	注意：
-		如果一个的时候只能默认生成密匙，不能另外起个名字，除非新建文件夹config,
-		git pull --rebase origin master failed to push some refs to git => github中的README.md文件不在本地代码目录中
-#如何克服解决 Git 冲突的恐惧症？
-	https://www.zhihu.com/question/27507789
-#git书籍
-	http://iissnan.com/progit/
-#几款Git GUI客户端工具
-	https://blog.csdn.net/xiaoguanyusb/article/details/79611647
-#问题
-	Pull is not possible because you have unmerged files
-		https://blog.csdn.net/kingle123/article/details/83443506
-	使用 ssh 协议
-		https://todebug.com/tips/
+	如果一个的时候只能默认生成密匙，不能另外起个名字，除非新建文件夹config,
+	git pull --rebase origin master failed to push some refs to git => github中的README.md文件不在本地代码目录中
+```
+
+[Windows安装git和环境变量配置](https://blog.csdn.net/dietime1943/article/details/71751007)  
+	
+[初次使用git配置以及git如何使用ssh密钥（将ssh密钥添加到github）](https://www.cnblogs.com/superGG1990/p/6844952.html)  
+	
+[删除远程库中一个文件(夹)，本地库不删除](https://blog.csdn.net/J080624/article/details/83346991)    
+
+[如何克服解决 Git 冲突的恐惧症？](https://www.zhihu.com/question/27507789)  
+	
+[git书籍](http://iissnan.com/progit/)  
+	
+[几款Git GUI客户端工具](https://blog.csdn.net/xiaoguanyusb/article/details/79611647)  
+	
+[问题]  
+	Pull is not possible because you have unmerged files  
+		https://blog.csdn.net/kingle123/article/details/83443506  
+	使用 ssh 协议  
+		https://todebug.com/tips/  
 	git bash中文显示为数字
-		https://www.cnblogs.com/songzhenhua/p/9312713.html
-
-
-
-
-安装
-yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
-
-tar -xvf git-2.6.2.tar.gz -C /data/soft/git_tmp_v2.6.2 --strip-components 1
-
-/data/soft/git_v2.6.2
-
-./configure --prefix=/usr/local
-
-
-yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker
-wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz
-mkdir -p /data/soft/git_v2.9.5
-tar -xvf git-2.9.5.tar.gz -C /data/soft/git_v2.9.5 --strip-components 1
-cd /data/soft/git_v2.9.5
-make prefix=/data/soft/git_v2.9.5 all
-sudo make prefix=/data/soft/git_v2.9.5 install
-
-
-git clone --bare tlblog tlblog.git
-
-/data/project_warehouse/front/tlblog
-
-git clone git@121.37.238.185:/data/project_warehouse/front/tlblog/tlblog.git
-
-
-ln -s /data/soft/git_v2.6.2/bin/git-upload-pack /usr/bin/git-upload-pack
-ln -s /data/soft/git_v2.6.2/bin/git-receive-pack /usr/bin/git-receive-pack
-
-chown -R git:git tlblog.git
-
-
-
-#!/bin/sh  
-export LANG=zh_CN.UTF-8
-cd /data/project_warehouse/front/tlblog      //这个是你每次要同步的文件夹
-unset GIT_DIR                                //这个很重要! 很多同学没有写这个就同步不了,因为git执行自动脚本的时候有执行一些自定义变量,所以我们在这里unset一下
-git pull origin master                       //这个当然就是更新了 因为我创建了个ceshi的分支,这个可以更改为你们要同步的分支
-
-Honorxxxx
-
-ssh-keygen -t rsa -C "root@163.com" //填写你的邮箱
-
-GIT_WORK_TREE=/data/project_warehouse/front/tlblog git checkout -f
-gitlab
+		https://www.cnblogs.com/songzhenhua/p/9312713.html  
 
